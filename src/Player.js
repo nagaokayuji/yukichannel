@@ -17,7 +17,6 @@ const Player = ({ src }) => {
     } else {
       try {
         videoRef.current.src = src;
-        videoRef.current.play();
       } catch (e) {
         console.warn(e);
       }
@@ -29,11 +28,16 @@ const Player = ({ src }) => {
       <div className="content">
         {isSupportBrowser ? (
           <div className="videoContainer">
-            <video ref={videoRef} className="video" controls></video>
+            <video ref={videoRef} className="video" controls muted></video>
           </div>
         ) : (
           <div className="notSupportBrowser">
-            <video ref={videoRef} className="video"></video>
+            <video
+              ref={videoRef}
+              className="video"
+              controls
+              playsinline
+            ></video>
           </div>
         )}
       </div>

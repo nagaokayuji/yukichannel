@@ -96,12 +96,24 @@ function App() {
             )}
           </div>
         </div>
-        <h2 style={{ marginTop: "80px" }}>Live</h2>
-        <Button variant="primary" style={{ margin: "20px" }} onClick={getUrls}>
-          get session url
-        </Button>
-        <div className="row loader"></div>
-        {urls ? urls.map((url) => <Player src={url} key={url} />) : "no videos"}
+        {user ? (
+          <div>
+            <h2 style={{ marginTop: "80px" }}>Live</h2>
+            <Button
+              variant="primary"
+              style={{ margin: "20px" }}
+              onClick={getUrls}
+            >
+              Reload
+            </Button>
+            <div className="row loader"></div>
+            {urls
+              ? urls.map((url) => <Player src={url} key={url} />)
+              : "no videos"}
+          </div>
+        ) : (
+          <div></div>
+        )}
         <h2 style={{ marginTop: "80px" }}>諭吉動画リスト</h2>
         <iframe
           width="664"
