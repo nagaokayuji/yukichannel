@@ -26,8 +26,9 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          bucket: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
           aws-region: ap-northeast-1
 
       - name: push
+        env:
+          bucket: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
         run: aws s3 sync build s3://${bucket}/ --delete
