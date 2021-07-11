@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Amplify, { Auth, Hub } from "aws-amplify";
+import awsconfig from "./aws-exports";
 
-Amplify.configure({
-  Auth: {
-    region: "ap-northeast-1", //process.env.REACT_APP_AWS_COGNITO_REGION,
-    userPoolId: "ap-northeast-1_T9t0ZjajV", //process.env.REACT_APP_AWS_USER_POOLS_ID,
-    userPoolWebClientId: "6i67no96drvb941gajdt3lfv7f", //process.env.REACT_APP_AWS_USER_POOLS_CLIENT_ID,
-  },
-});
+// settings
+Amplify.configure(awsconfig);
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -15,9 +12,12 @@ function App() {
     Hub.listen("auth", ({ payload: { event, data } }) => {
       switch (event) {
         case "signIn":
-        case "cognitoHostedUI":
-          getUser().then((userData) => setUser(userData));
+        case "cognitoHostedUI": {
+          getUser().then((userData) => {
+            setUser(userData);
+          });
           break;
+        }
         case "signOut":
           setUser(null);
           break;
@@ -25,30 +25,48 @@ function App() {
         case "cognitoHostedUI_failure":
           console.log("Sign in failure", data);
           break;
-        default:
-          console.warn("unexpected state");
       }
     });
 
-    getUser().then((userData) => setUser(userData));
+    getUser().then((userData) => {
+      setUser(userData);
+    });
   }, []);
 
   function getUser() {
     return Auth.currentAuthenticatedUser()
-      .then((userData) => userData)
+      .then((userData) => {
+        return userData;
+      })
       .catch(() => console.log("Not signed in"));
+  }
+  function getEmail() {
+    try {
+      return JSON.stringify(
+        user["signInUserSession"]["idToken"]["payload"]["email"]
+      );
+    } catch (e) {}
+  }
+  function getToken() {
+    try {
+      return user["signInUserSession"]["idToken"]["jwtToken"];
+    } catch (e) {}
   }
 
   return (
     <div>
-      <p>User: {user ? JSON.stringify(user.attributes) : "None"}</p>
+      <p>User: {user ? getEmail() : "None"}</p>
       {user ? (
-        <button onClick={() => Auth.signOut()}>Sign Out</button>
+        <div>
+          <button onClick={() => Auth.signOut()}>Sign Out</button>
+        </div>
       ) : (
         <button onClick={() => Auth.federatedSignIn()}>
           Federated Sign In
         </button>
       )}
+      <h3>token</h3>
+      {getToken()}
     </div>
   );
 }
