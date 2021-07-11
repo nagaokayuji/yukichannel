@@ -1,0 +1,25 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reactredux-dev-163632-authRole",
+      "UnauthRoleArn": "arn:aws:iam::983627551655:role/amplify-reactredux-dev-163632-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::983627551655:role/amplify-reactredux-dev-163632-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-reactredux-dev-163632-deployment",
+      "UnauthRoleName": "amplify-reactredux-dev-163632-unauthRole",
+      "StackName": "amplify-reactredux-dev-163632",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:983627551655:stack/amplify-reactredux-dev-163632/bcc7cd50-e21a-11eb-9351-0efee4c0f8ad",
+      "AmplifyAppId": "dmnm8gs7648y"
+    },
+    "categories": {
+      "auth": {
+        "reactredux3c9473d2": {
+          "userPoolId": "ap-northeast-1_T9t0ZjajV",
+          "userPoolName": "yukichannel",
+          "webClientId": "mqs4lbehp8q84a1jerj3eaqe4",
+          "nativeClientId": "6i67no96drvb941gajdt3lfv7f"
+        }
+      }
+    }
+  }
+}

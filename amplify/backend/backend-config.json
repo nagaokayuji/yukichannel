@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "reactredux3c9473d2": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
