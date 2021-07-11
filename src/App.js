@@ -3,10 +3,12 @@ import Amplify, { Auth, Hub } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import Player from "./Player";
 
 Amplify.configure(awsconfig);
 function App() {
   const [user, setUser] = useState(null);
+  const [urls, setUrls] = useState(null);
 
   useEffect(() => {
     Hub.listen("auth", ({ payload: { event, data } }) => {
@@ -57,13 +59,17 @@ function App() {
 
   const getUrls = async () => {
     const token = getToken();
-    const response = axios.get("/videos", {
-      headers: {
-        Authorization: token,
-      },
-    });
-    console.log(JSON.stringify(response));
-    return JSON.stringify(response);
+    return axios
+      .get("https://api.yukichannel.net/videos", {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setUrls(res["data"]["videos"]);
+        return res;
+      });
   };
 
   return (
@@ -72,7 +78,7 @@ function App() {
       <div className="container mb-3">
         <div style={{ display: "flex" }}>
           user: {user ? getEmail() : "None"}
-          <div style={{ "margin-left": "40px" }}>
+          <div style={{ marginLeft: "40px" }}>
             {user ? (
               <Button
                 variant="outline-secondary"
@@ -90,27 +96,21 @@ function App() {
             )}
           </div>
         </div>
-        <h2 style={{ "margin-top": "80px" }}>Live</h2>
+        <h2 style={{ marginTop: "80px" }}>Live</h2>
         <Button variant="primary" style={{ margin: "20px" }} onClick={getUrls}>
           get session url
         </Button>
         <div className="row loader"></div>
-        <video
-          id="hlsjs"
-          class="player"
-          style={{ width: "100%", height: "auto", outline: "none" }}
-          controls
-          autoplay
-        ></video>
-        <h2 style={{ "margin-top": "80px" }}>諭吉動画リスト</h2>
+        {urls ? urls.map((url) => <Player src={url} key={url} />) : "no videos"}
+        <h2 style={{ marginTop: "80px" }}>諭吉動画リスト</h2>
         <iframe
           width="664"
           height="380"
           src="https://www.youtube.com/embed/B9krT5Lq-1U?list=PLBn82aS9YRQJ3Apw0cLYCBfC-vOCU5BkG"
           title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          frameBorder="0"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
         ></iframe>
       </div>
     </div>
