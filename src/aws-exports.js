@@ -7,10 +7,10 @@ const awsmobile = {
   aws_user_pools_id: "ap-northeast-1_T9t0ZjajV",
   aws_user_pools_web_client_id: "mqs4lbehp8q84a1jerj3eaqe4",
   oauth: {
-    domain: "auth.yukichannel.net",
+    domain: "auth.oyukimaru.com",
     scope: ["email", "openid", "profile"],
-    redirectSignIn: "https://yukichannel.net",
-    redirectSignOut: "https://yukichannel.net",
+    redirectSignIn: "https://oyukimaru.com",
+    redirectSignOut: "https://oyukimaru.com",
     // redirectSignIn: "http://localhost:3000",
     // redirectSignOut: "http://localhost:3000",
     responseType: "token",

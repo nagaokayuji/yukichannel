@@ -60,7 +60,7 @@ function App() {
   const getUrls = () => {
     const token = getToken();
     axios
-      .get("https://api.yukichannel.net/videos", {
+      .get("https://api.oyukimaru.com/videos", {
         headers: {
           Authorization: token,
         },
