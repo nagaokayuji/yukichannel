@@ -5,7 +5,7 @@ const awsmobile = {
   aws_project_region: "ap-northeast-1",
   aws_cognito_region: "ap-northeast-1",
   aws_user_pools_id: "ap-northeast-1_T9t0ZjajV",
-  aws_user_pools_web_client_id: "mqs4lbehp8q84a1jerj3eaqe4",
+  aws_user_pools_web_client_id: "2iqupn0ulku74jchk02nra21pu",
   oauth: {
     domain: "auth.oyukimaru.com",
     scope: ["email", "openid", "profile"],
