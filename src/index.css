@@ -15,6 +15,6 @@ code {
 h1 {
   color: azure;
   font: bold 80%/1em Arial, Helvetica, sans-serif;
-  background: #f1b308 url(../img/icon.png) no-repeat right top;
+  background: #f1b308 url(./img/icon.png) no-repeat right top;
   background-size: 50px;
 }
