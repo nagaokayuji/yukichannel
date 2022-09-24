@@ -82,6 +82,9 @@ function App() {
     <div>
       <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
       <div className="container mb-3">
+        <div>
+          <h1>YukiChannel</h1>
+        </div>
         <div style={{ display: "flex" }}>
           user: {user ? getEmail() : "None"}
           <div style={{ marginLeft: "40px" }}>
