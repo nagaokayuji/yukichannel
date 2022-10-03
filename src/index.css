@@ -17,3 +17,42 @@ h1 {
   background: #f1b308 url(./img/icon.png) no-repeat right top;
   background-size: 50px;
 }
+
+.logo {
+  margin: 5px;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+.menu {
+  margin:0 0 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: azure;
+  background: #f1b308;
+  width: 100vw;
+}
+
+nav {
+  display: inline-block;
+}
+
+ul.list {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  }
+  
+  li.button {
+    padding: 0 10px;
+    margin-top:14px;
+  }
+
+  li.normal {
+    padding: 0 10px;
+    margin-top:20px;
+  }
