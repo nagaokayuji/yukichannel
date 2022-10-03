@@ -35,14 +35,14 @@ ul.list {
   display: flex;
   justify-content: flex-end;
   list-style: none;
-  }
-  
-  li.button {
-    padding: 0 10px;
-    margin-top:14px;
-  }
+}
 
-  li.normal {
-    padding: 0 10px;
-    margin-top:20px;
-  }
+li.button {
+  padding: 0 10px;
+  margin-top: 14px;
+}
+
+li.normal {
+  padding: 0 10px;
+  margin-top: 20px;
+}
