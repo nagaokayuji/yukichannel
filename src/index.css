@@ -12,20 +12,10 @@ code {
     monospace;
 }
 
-h1 {
-  color: azure;
-  background: #f1b308 url(./img/icon.png) no-repeat right top;
-  background-size: 50px;
-}
-
 .logo {
   margin: 5px;
   padding: 10px 20px;
   display: inline-block;
-}
-
-.menu {
-  margin:0 0 0 auto;
 }
 
 .header {
