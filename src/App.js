@@ -49,12 +49,12 @@ function App() {
       return JSON.stringify(
         user["signInUserSession"]["idToken"]["payload"]["email"]
       );
-    } catch (e) {}
+    } catch (e) { }
   };
   const getToken = () => {
     try {
       return user["signInUserSession"]["idToken"]["jwtToken"];
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const getUrls = () => {
@@ -80,32 +80,32 @@ function App() {
 
   return (
     <div>
-        <div class="header">
-          <div class="logo">YukiChannel</div>
-          <nav>
+      <div class="header">
+        <div class="logo">YukiChannel</div>
+        <nav>
           <ul class="list">
             <li class="normal">user: {user ? getEmail() : "None"}</li>
             <li class="button">
-            {user ? (
-              <Button
-                variant="outline-secondary"
-                onClick={() => Auth.signOut()}
-              >
-                Sign Out
-              </Button>
-            ) : (
-              <Button 
-                variant="outline-primary"
-                onClick={() => Auth.federatedSignIn()}
-              >
-                Federated Sign In
-              </Button>
-            )}
-          
-          </li>
+              {user ? (
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => Auth.signOut()}
+                >
+                  Sign Out
+                </Button>
+              ) : (
+                <Button
+                  variant="outline-primary"
+                  onClick={() => Auth.federatedSignIn()}
+                >
+                  Federated Sign In
+                </Button>
+              )}
+
+            </li>
           </ul>
-          </nav>
-        </div>
+        </nav>
+      </div>
       <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
       <div className="container mb-3">
         {user ? (
