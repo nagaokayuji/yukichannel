@@ -1,3 +1,7 @@
+html {
+  height: 100%
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +9,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 code {
@@ -12,8 +21,57 @@ code {
     monospace;
 }
 
-h1 {
-  color: azure;
-  background: #f1b308 url(./img/icon.png) no-repeat right top;
-  background-size: 50px;
+.logo {
+  margin: 5px;
+  padding: 10px 20px;
+  display: inline-block;
+  font-family: cursive;
+  pointer-events: none;
+  cursor: default;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  background: #ffffff;
+  font-family: "Gill Sans", sans-serif;
+  width: 100vw;
+}
+
+nav {
+  display: inline-block;
+}
+
+ul.list {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  margin-right: 10px;
+}
+
+li.button {
+  padding: 0 10px;
+  margin-top: 14px;
+}
+
+li.normal {
+  padding: 0 10px;
+  margin-top: 20px;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+}
+
+.video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
