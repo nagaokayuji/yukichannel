@@ -107,30 +107,7 @@ function App() {
         </nav>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-      <div>
-        <h1>YukiChannel</h1>
-      </div>
       <div className="container mb-3">
-        <div style={{ display: "flex" }}>
-          user: {user ? getEmail() : "None"}
-          <div style={{ marginLeft: "40px" }}>
-            {user ? (
-              <Button
-                variant="outline-secondary"
-                onClick={() => Auth.signOut()}
-              >
-                Sign Out
-              </Button>
-            ) : (
-              <Button
-                variant="outline-primary"
-                onClick={() => Auth.federatedSignIn()}
-              >
-                Federated Sign In
-              </Button>
-            )}
-          </div>
-        </div>
         {user ? (
           urls !== "not authenticated" ? (
             <>
