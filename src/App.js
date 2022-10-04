@@ -79,7 +79,7 @@ function App() {
   const notAuthenticated = <Alert variant="danger">権限がありません</Alert>;
 
   return (
-    <div>
+    <>
       <div class="header">
         <div class="logo">YukiChannel</div>
         <nav>
@@ -133,17 +133,19 @@ function App() {
           <div></div>
         )}
         <h2 style={{ marginTop: "80px" }}>諭吉動画リスト</h2>
-        <iframe
-          width="664"
-          height="380"
-          src="https://www.youtube.com/embed/B9krT5Lq-1U?list=PLBn82aS9YRQJ3Apw0cLYCBfC-vOCU5BkG"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <div class="video">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/B9krT5Lq-1U?list=PLBn82aS9YRQJ3Apw0cLYCBfC-vOCU5BkG"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
