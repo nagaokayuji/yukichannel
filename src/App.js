@@ -4,6 +4,7 @@ import awsconfig from "./aws-exports";
 import { Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import Player from "./Player";
+import Slide from "./Slide";
 
 Amplify.configure(awsconfig);
 function App() {
@@ -80,12 +81,12 @@ function App() {
 
   return (
     <>
-      <div class="header">
-        <div class="logo">YukiChannel</div>
+      <div className="header">
+        <div className="logo">YukiChannel</div>
         <nav>
-          <ul class="list">
-            <li class="normal">user: {user ? getEmail() : "None"}</li>
-            <li class="button">
+          <ul className="list">
+            <li className="normal">user: {user ? getEmail() : "None"}</li>
+            <li className="button">
               {user ? (
                 <Button
                   variant="outline-secondary"
@@ -106,6 +107,7 @@ function App() {
           </ul>
         </nav>
       </div>
+      <Slide />
       <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
       <div className="container mb-3">
         {user ? (
@@ -132,8 +134,8 @@ function App() {
         ) : (
           <div></div>
         )}
-        <h2 style={{ marginTop: "80px" }}>諭吉動画リスト</h2>
-        <div class="video">
+        <h2 style={{ marginTop: "40px", fontFamily: "cursive" }}>Vlog</h2>
+        <div className="video">
           <iframe
             width="560"
             height="315"
@@ -145,6 +147,7 @@ function App() {
           ></iframe>
         </div>
       </div>
+      <div className="footer"> YukiChannel </div>
     </>
   );
 }
