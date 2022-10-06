@@ -1,0 +1,67 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "standard",
+    "standard-with-typescript",
+    "standard-jsx",
+    "plugin:react/recommended",
+    "plugin:css-modules/recommended"
+  ],
+  "plugins": [
+    "react-hooks",
+    "css-modules"
+  ],
+  "rules": {
+    "react/prop-types": 0,
+    "standard/computed-property-even-spacing": "off",
+    "react-hooks/rules-of-hooks": "error"
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "node": {
+      "tryExtensions": [
+        ".ts",
+        ".tsx",
+        ".js"
+      ]
+    },
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "plugins": [
+        "@typescript-eslint",
+        "react-hooks",
+        "css-modules"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/promise-function-async": [
+          "error",
+          {
+            "allowedPromiseNames": [],
+            "checkArrowFunctions": false,
+            "checkFunctionDeclarations": true,
+            "checkFunctionExpressions": false,
+            "checkMethodDeclarations": false
+          }
+        ]
+      }
+    }
+  ]
+}
