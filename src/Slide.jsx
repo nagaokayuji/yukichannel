@@ -10,7 +10,7 @@ const imgUrls = [
 const Slide = () => {
     return (
         <>
-            <Carousel>
+            <Carousel indicators={false} nextLabel={null} prevLabel={null}>
                 {imgUrls.map((url, index) => <Carousel.Item>
                     <img className="d-block w-100" src={url} alt={`yuki ${index}`} />
                 </Carousel.Item>)}
