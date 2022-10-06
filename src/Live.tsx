@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import {useState} from "react";
 import { Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import Player from "./Player";
 
 const Live = ({ user }) => {
-  const [urls, setUrls] = useState(null);
+  const [urls, setUrls] = useState<string[]>([]);
   const getToken = () => {
     try {
       return user["signInUserSession"]["idToken"]["jwtToken"];
@@ -27,14 +27,14 @@ const Live = ({ user }) => {
         console.warn(urls);
       })
       .catch((error) => {
-        setUrls("not authenticated");
+        setUrls([]);
         console.log(error.response);
       });
   };
 
   return (
     <>{user ? (
-      urls !== "not authenticated" ? (
+      urls ? (
         <>
           <div>
             <h2 style={{ marginTop: "80px" }}>Live</h2>

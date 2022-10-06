@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 const Header = ({ user }) => {
@@ -7,7 +6,9 @@ const Header = ({ user }) => {
       return JSON.stringify(
         user["signInUserSession"]["idToken"]["payload"]["email"]
       );
-    } catch (e) { }
+    } catch (e) {
+      return "";
+    }
   };
 
   return (
