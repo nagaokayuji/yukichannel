@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Amplify, { Auth, Hub } from "aws-amplify";
 import awsconfig from "./aws-exports";
-import { Button, Alert } from "react-bootstrap";
-import axios from "axios";
-import Player from "./Player";
 import Slide from "./Slide";
+import Header from "./Header";
+import Vlog from "./Vlog";
+import Live from "./Live";
 
 Amplify.configure(awsconfig);
 function App() {
   const [user, setUser] = useState(null);
-  const [urls, setUrls] = useState(null);
 
   useEffect(() => {
     Hub.listen("auth", ({ payload: { event, data } }) => {
@@ -45,107 +44,15 @@ function App() {
       })
       .catch(() => console.log("Not signed in"));
   };
-  const getEmail = () => {
-    try {
-      return JSON.stringify(
-        user["signInUserSession"]["idToken"]["payload"]["email"]
-      );
-    } catch (e) { }
-  };
-  const getToken = () => {
-    try {
-      return user["signInUserSession"]["idToken"]["jwtToken"];
-    } catch (e) { }
-  };
-
-  const getUrls = () => {
-    const token = getToken();
-    axios
-      .get("https://api.oyukimaru.com/videos", {
-        headers: {
-          Authorization: token,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        setUrls(res["data"]["videos"]);
-        console.warn(urls);
-      })
-      .catch((error) => {
-        setUrls("not authenticated");
-        console.log(error.response);
-      });
-  };
-
-  const notAuthenticated = <Alert variant="danger">権限がありません</Alert>;
 
   return (
     <>
-      <div className="header">
-        <div className="logo">YukiChannel</div>
-        <nav>
-          <ul className="list">
-            <li className="normal">user: {user ? getEmail() : "None"}</li>
-            <li className="button">
-              {user ? (
-                <Button
-                  variant="outline-secondary"
-                  onClick={() => Auth.signOut()}
-                >
-                  Sign Out
-                </Button>
-              ) : (
-                <Button
-                  variant="outline-primary"
-                  onClick={() => Auth.federatedSignIn()}
-                >
-                  Federated Sign In
-                </Button>
-              )}
-
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <Header user={user} />
       <Slide />
       <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
       <div className="container mb-3">
-        {user ? (
-          urls !== "not authenticated" ? (
-            <>
-              <div>
-                <h2 style={{ marginTop: "80px" }}>Live</h2>
-                <Button
-                  variant="primary"
-                  style={{ margin: "20px" }}
-                  onClick={getUrls}
-                >
-                  Reload
-                </Button>
-                <div className="row loader"></div>
-                {urls
-                  ? urls.map((url) => <Player src={url} key={url} />)
-                  : "no videos"}
-              </div>
-            </>
-          ) : (
-            notAuthenticated
-          )
-        ) : (
-          <div></div>
-        )}
-        <h2 style={{ marginTop: "40px", fontFamily: "cursive" }}>Vlog</h2>
-        <div className="video">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/B9krT5Lq-1U?list=PLBn82aS9YRQJ3Apw0cLYCBfC-vOCU5BkG"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
+        <Live user={user} />
+        <Vlog />
       </div>
       <div className="footer"> YukiChannel </div>
     </>
