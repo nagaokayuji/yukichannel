@@ -1,0 +1,10 @@
+---
+env:
+  es2020: true
+  jest/globals: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  project: ./tsconfig.json
+plugins:
+  - jest
+  - '@typescript-eslint'

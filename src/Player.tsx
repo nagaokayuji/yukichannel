@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import {useEffect, useMemo, useRef} from "react";
 import Hls from "hls.js";
 
 const Player = ({ src }) => {
   const isSupportBrowser = useMemo(() => Hls.isSupported(), []);
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (isSupportBrowser) {
+    if (isSupportBrowser && videoRef.current) {
       var hls = new Hls();
       hls.loadSource(src);
       hls.attachMedia(videoRef.current);
@@ -16,11 +16,14 @@ const Player = ({ src }) => {
       };
     } else {
       try {
-        videoRef.current.src = src;
+        if (videoRef.current) {
+          videoRef.current.src = src;
+        }
       } catch (e) {
         console.warn(e);
       }
     }
+    return () => { };
     // eslint-disable-next-line
   }, [src]);
   return (
@@ -36,7 +39,7 @@ const Player = ({ src }) => {
               ref={videoRef}
               className="video"
               controls
-              playsinline
+                playsInline
             ></video>
           </div>
         )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import Amplify, { Auth, Hub } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import Slide from "./Slide";
