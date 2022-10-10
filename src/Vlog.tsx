@@ -1,8 +1,7 @@
-
 const Vlog = () => {
   return (
     <>
-      <h2 style={{ marginTop: "40px", fontFamily: "cursive" }}>Vlog</h2>
+      <div className="elementTitle">Vlog</div>
       <div className="video">
         <iframe
           width="560"

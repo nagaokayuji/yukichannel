@@ -9,11 +9,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
+  height: auto;
+  background: #fff5e4;
 }
 
 #root {
   height: 100%;
+  background: #fff5e4;
 }
 
 code {
@@ -25,7 +27,7 @@ code {
   margin: 5px;
   padding: 10px 20px;
   display: inline-block;
-  font-family: cursive;
+  font-family: 'Caveat', cursive;
   pointer-events: none;
   cursor: default;
 }
@@ -35,7 +37,7 @@ code {
   justify-content: space-between;
   align-items: center;
   color: rgb(0, 0, 0);
-  background: #ffffff;
+  background: #fff5e4;
   font-family: "Gill Sans", sans-serif;
   width: 100vw;
 }
@@ -84,7 +86,32 @@ li.normal {
   margin-top: 40px;
   justify-content: center;
   align-items: center;
-  color: rgb(255, 255, 255);
-  background: #9e7ba6;
+  color: #FFE3E1;
+  background: #FF9494;
   width: 100vw;
+}
+
+.elementTitle {
+  font-family: 'Caveat', cursive;
+}
+
+.element {
+  padding: 10px;
+}
+
+.underNav {
+  background: #FF9494;
+  height: 70px;
+}
+
+.underNavNav {
+  justify-content: center;
+  height: 100%;
+}
+
+.navLink {
+  color: #FFE3E1;
+  font-family: 'Caveat', cursive;
+  height: 100%;
+  line-height: 50px;
 }
