@@ -1,10 +1,12 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Amplify, { Auth, Hub } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import Slide from "./Slide";
 import Header from "./Header";
 import Vlog from "./Vlog";
 import Live from "./Live";
+import Nav from "./Nav";
+import Yuki from "./Yuki";
 
 Amplify.configure(awsconfig);
 function App() {
@@ -49,10 +51,12 @@ function App() {
     <>
       <Header user={user} />
       <Slide />
+      <Nav />
       <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-      <div className="container mb-3">
-        <Live user={user} />
-        <Vlog />
+      <div className="container mb-3 mt-3">
+        <div className="element" id="yuki"><Yuki /></div>
+        <div className="element" id="vlog"><Vlog /></div>
+        <div className="element" id="live"><Live user={user} /></div>
       </div>
       <div className="footer"> YukiChannel </div>
     </>

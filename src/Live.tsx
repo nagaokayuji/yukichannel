@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import Player from "./Player";
@@ -37,7 +37,7 @@ const Live = ({ user }) => {
       urls ? (
         <>
           <div>
-            <h2 style={{ marginTop: "80px" }}>Live</h2>
+            <h2 style={{ marginTop: "40px" }}>Live</h2>
             <Button
               variant="primary"
               style={{ margin: "20px" }}
