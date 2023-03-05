@@ -8,7 +8,7 @@ const Live = ({ user }) => {
   const getToken = () => {
     try {
       return user["signInUserSession"]["idToken"]["jwtToken"];
-    } catch (e) { }
+    } catch (e) {}
   };
 
   const notAuthenticated = <Alert variant="danger">権限がありません</Alert>;
@@ -33,32 +33,32 @@ const Live = ({ user }) => {
   };
 
   return (
-    <>{user ? (
-      urls ? (
-        <>
-          <div>
-            <h2 style={{ marginTop: "40px" }}>Live</h2>
-            <Button
-              variant="primary"
-              style={{ margin: "20px" }}
-              onClick={getUrls}
-            >
-              Reload
-            </Button>
-            <div className="row loader"></div>
-            {urls
-              ? urls.map((url) => <Player src={url} key={url} />)
-              : "no videos"}
-          </div>
-        </>
-      ) : (
-        notAuthenticated
-      )
-    ) : (
-      <div></div>
-    )}
+    <>
+      {user &&
+        (urls ? (
+          <>
+            <div>
+              <h2 style={{ marginTop: "40px" }}>Live</h2>
+              <Button
+                variant="primary"
+                style={{ margin: "20px" }}
+                onClick={getUrls}
+              >
+                Reload
+              </Button>
+              <div className="row loader"></div>
+              {urls ? (
+                urls.map((url) => <Player src={url} key={url} />)
+              ) : (
+                <span> No videos </span>
+              )}
+            </div>
+          </>
+        ) : (
+          notAuthenticated
+        ))}
     </>
-  )
-}
+  );
+};
 
-export default Live
+export default Live;
