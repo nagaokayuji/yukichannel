@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useRef} from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Hls from "hls.js";
 
 const Player = ({ src }) => {
@@ -23,7 +23,7 @@ const Player = ({ src }) => {
         console.warn(e);
       }
     }
-    return () => { };
+    return () => {};
     // eslint-disable-next-line
   }, [src]);
   return (
@@ -39,7 +39,7 @@ const Player = ({ src }) => {
               ref={videoRef}
               className="video"
               controls
-                playsInline
+              playsInline
             ></video>
           </div>
         )}
