@@ -2,11 +2,11 @@ import { useEffect, useMemo, useRef } from "react";
 import Hls from "hls.js";
 
 const Player = ({ src }) => {
-  const isSupportBrowser = useMemo(() => Hls.isSupported(), []);
+  const isSupportedBrowser = useMemo(() => Hls.isSupported(), []);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (isSupportBrowser && videoRef.current) {
+    if (isSupportedBrowser && videoRef.current) {
       var hls = new Hls();
       hls.loadSource(src);
       hls.attachMedia(videoRef.current);
@@ -14,27 +14,25 @@ const Player = ({ src }) => {
         hls.removeAllListeners();
         hls.stopLoad();
       };
-    } else {
-      try {
-        if (videoRef.current) {
-          videoRef.current.src = src;
-        }
-      } catch (e) {
-        console.warn(e);
+    }
+    try {
+      if (videoRef.current) {
+        videoRef.current.src = src;
       }
+    } catch (e) {
+      console.warn(e);
     }
     return () => {};
-    // eslint-disable-next-line
   }, [src]);
   return (
     <>
       <div className="content">
-        {isSupportBrowser ? (
+        {isSupportedBrowser ? (
           <div className="videoContainer">
             <video ref={videoRef} className="video" controls muted></video>
           </div>
         ) : (
-          <div className="notSupportBrowser">
+          <div className="notSupportedBrowser">
             <video
               ref={videoRef}
               className="video"
