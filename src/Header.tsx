@@ -17,7 +17,9 @@ const Header = ({ user }) => {
         <div className="logo">YukiChannel</div>
         <nav>
           <ul className="list">
-            <li className="normal">user: {user ? getEmail() : "None"}</li>
+            {
+              user && <li className="normal">user: { getEmail() }</li>
+            }
             <li className="button">
               {user ? (
                 <Button
@@ -31,7 +33,7 @@ const Header = ({ user }) => {
                   variant="outline-primary"
                   onClick={() => Auth.federatedSignIn()}
                 >
-                  Federated Sign In
+                  Sign In
                 </Button>
               )}
 
