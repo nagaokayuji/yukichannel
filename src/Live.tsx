@@ -57,6 +57,12 @@ const Live = ({ user }) => {
         ) : (
           notAuthenticated
         ))}
+      <h3>Demo stream</h3>
+      <Player
+        src={
+          "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
+        }
+      />
     </>
   );
 };
