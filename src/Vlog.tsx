@@ -2,7 +2,7 @@ const Vlog = () => {
   return (
     <>
       <div className="elementTitle">Vlog</div>
-      <div className="video">
+      <div className="vlog">
         <iframe
           width="560"
           height="315"
@@ -14,7 +14,7 @@ const Vlog = () => {
         ></iframe>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Vlog
+export default Vlog;
