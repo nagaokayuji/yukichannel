@@ -32,6 +32,7 @@ const Player = ({ src }) => {
             <video ref={videoRef} className="video" controls muted></video>
           </div>
         ) : (
+          // FIXME: for mobile
           <div className="notSupportedBrowser">
             <video
               ref={videoRef}
